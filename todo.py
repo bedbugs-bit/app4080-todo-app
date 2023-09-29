@@ -3,17 +3,18 @@
 todos = []
 
 def add_todo(item):
-    todos.append(item)
+    todos.append({"task": item, "complete": False})
 
 def view_todos():
     for idx, item in enumerate(todos):
-        print(f"{idx + 1}. {item}")
+        status = "Done" if item["complete"] else "Not Done"
+        print(f"{idx + 1}. {item['task']} - {status}")
 
-def remove_todo(index):
+def mark_as_complete(index):
     if 0 <= index < len(todos):
-        del todos[index]
+        todos[index]["complete"] = True
     else:
-        print("Invalid index!")
+        print("Invalid index!")1
 
 if __name__ == "__main__":
     while True:
